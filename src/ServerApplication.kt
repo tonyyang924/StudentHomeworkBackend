@@ -39,26 +39,41 @@ fun Application.main() {
 
     routing {
         route("/student") {
-            get("/") {
+            get {
                 call.respond(StudentRepository.getStudents())
             }
-            put("/") {
+            put {
                 val student = call.receive<Student>()
                 val updated = StudentRepository.updateStudent(student)
                 if (updated == null) call.respond(HttpStatusCode.NotFound)
                 else call.respond(HttpStatusCode.OK, updated)
             }
-            get("/{id}") {
-                val id = call.parameters["id"]
-                if (id != null) {
-                    val student = StudentRepository.getStudent(id.toInt())
-                    if (student == null) {
-                        call.respond(HttpStatusCode.NotFound)
+            route("/{id}") {
+                get {
+                    val id = call.parameters["id"]
+                    if (id != null) {
+                        val student = StudentRepository.getStudent(id.toInt())
+                        if (student == null) {
+                            call.respond(HttpStatusCode.NotFound)
+                        } else {
+                            call.respond(student)
+                        }
                     } else {
-                        call.respond(student)
+                        call.respond(HttpStatusCode.NotFound, "Invalid request!")
                     }
-                } else {
-                    call.respond(HttpStatusCode.NotFound, "Invalid request!")
+                }
+                get("/detail") {
+                    val id = call.parameters["id"]
+                    if (id != null) {
+                        val student = StudentRepository.getStudentDetail(id.toInt())
+                        if (student == null) {
+                            call.respond(HttpStatusCode.NotFound)
+                        } else {
+                            call.respond(student)
+                        }
+                    } else {
+                        call.respond(HttpStatusCode.NotFound, "Invalid request!")
+                    }
                 }
             }
         }

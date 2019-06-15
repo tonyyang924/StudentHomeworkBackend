@@ -10,6 +10,9 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import tony.studenthomework.server.model.Homeworks
 import tony.studenthomework.server.model.Records
+import tony.studenthomework.server.model.Records.hid
+import tony.studenthomework.server.model.Records.sid
+import tony.studenthomework.server.model.Records.status
 import tony.studenthomework.server.model.Students
 
 

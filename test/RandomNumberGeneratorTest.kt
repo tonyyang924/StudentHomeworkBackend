@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import utils.RandomNumberGenerator
+import tony.studenthomework.server.utils.RandomNumberGenerator
 
 class RandomNumberGeneratorTest {
 

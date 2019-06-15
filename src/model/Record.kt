@@ -16,6 +16,11 @@ data class Record(
     val status: Int
 )
 
+data class RecordStatus(
+    val id: Int,
+    val status: String
+)
+
 enum class RecordStatusEnum(val status: Int) {
     NOT_YET(0),
     PROCESSING(1),

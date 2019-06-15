@@ -4,6 +4,9 @@ import org.jetbrains.exposed.sql.*
 import tony.studenthomework.server.model.RecordStatusEnum
 import tony.studenthomework.server.model.Record
 import tony.studenthomework.server.model.Records
+import tony.studenthomework.server.model.Records.hid
+import tony.studenthomework.server.model.Records.sid
+import tony.studenthomework.server.model.Records.status
 import tony.studenthomework.server.utils.DatabaseFactory.dbQuery
 
 

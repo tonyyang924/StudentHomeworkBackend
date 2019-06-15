@@ -13,3 +13,15 @@ data class Student(
     val number: String,
     val name: String
 )
+
+data class StudentDetail(
+    val id: Int,
+    val number: String,
+    val name: String,
+    val recordedHomework: List<RecordedHomework>
+)
+
+data class RecordedHomework(
+    val homework: Homework,
+    val status: RecordStatus
+)
