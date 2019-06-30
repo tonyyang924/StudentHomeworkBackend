@@ -5,6 +5,7 @@ import tony.studenthomework.server.model.RecordStatusEnum
 import tony.studenthomework.server.model.Record
 import tony.studenthomework.server.model.Records
 import tony.studenthomework.server.model.Records.hid
+import tony.studenthomework.server.model.Records.id
 import tony.studenthomework.server.model.Records.sid
 import tony.studenthomework.server.model.Records.status
 import tony.studenthomework.server.utils.DatabaseFactory.dbQuery
@@ -26,10 +27,21 @@ object RecordRepository {
         }.singleOrNull()
     }
 
+    suspend fun updateRecords(records: List<Record>): List<Record> {
+        val list = arrayListOf<Record>()
+        records.forEach {
+            val updatedRecord = updateRecord(it)
+            if (updatedRecord != null) {
+                list.add(updatedRecord)
+            }
+        }
+        return list
+    }
+
     suspend fun updateRecord(record: Record): Record? {
         val existingRecord = dbQuery {
             Records.select {
-                (Records.sid eq record.sid) and (Records.hid eq record.hid)
+                (sid eq record.sid) and (hid eq record.hid)
             }.mapNotNull {
                 toRecord(it)
             }.singleOrNull()
@@ -41,7 +53,7 @@ object RecordRepository {
                 @Suppress("ReplaceSingleLineLet")
                 RecordStatusEnum.values()[record.status].let {
                     getRecord(dbQuery {
-                        Records.update({ (Records.sid eq existingRecord.sid) and (Records.hid eq existingRecord.hid) }) {
+                        Records.update({ (sid eq existingRecord.sid) and (hid eq existingRecord.hid) }) {
                             it[status] = record.status
                         }
                     })
@@ -75,8 +87,8 @@ object RecordRepository {
     private fun toRecord(row: ResultRow): Record =
         Record(
             id = row[Records.id],
-            sid = row[Records.sid],
-            hid = row[Records.hid],
-            status = row[Records.status]
+            sid = row[sid],
+            hid = row[hid],
+            status = row[status]
         )
 }

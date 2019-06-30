@@ -1,6 +1,8 @@
 package tony.studenthomework.server
 
 import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
@@ -82,10 +84,11 @@ fun Application.main() {
                 call.respond(HomeworkRepository.getHomeworks())
             }
             put("/") {
-                val homework = call.receive<Homework>()
-                val updated = HomeworkRepository.updateHomework(homework)
-                if (updated == null) call.respond(HttpStatusCode.NotFound)
-                else call.respond(HttpStatusCode.OK, updated)
+                val json = call.receive<String>()
+                val mapper = jacksonObjectMapper()
+                val homeworks = mapper.readValue<List<Homework>>(json)
+                val updated = HomeworkRepository.updateHomeworks(homeworks)
+                call.respond(HttpStatusCode.OK, updated)
             }
             get("/{id}") {
                 val id = call.parameters["id"]
@@ -100,16 +103,23 @@ fun Application.main() {
                     call.respond(HttpStatusCode.NotFound, "Invalid request!")
                 }
             }
+            put("/{id}") {
+                val homework = call.receive<Homework>()
+                val updated = HomeworkRepository.updateHomework(homework)
+                if (updated == null) call.respond(HttpStatusCode.NotFound)
+                else call.respond(HttpStatusCode.OK, updated)
+            }
         }
         route("/record") {
             get("/") {
                 call.respond(RecordRepository.getRecords())
             }
             put("/") {
-                val record = call.receive<Record>()
-                val updated = RecordRepository.updateRecord(record)
-                if (updated == null) call.respond(HttpStatusCode.NotFound)
-                else call.respond(HttpStatusCode.OK, updated)
+                val json = call.receive<String>()
+                val mapper = jacksonObjectMapper()
+                val records = mapper.readValue<List<Record>>(json)
+                val updated = RecordRepository.updateRecords(records)
+                call.respond(HttpStatusCode.OK, updated)
             }
             get("/{id}") {
                 val id = call.parameters["id"]
@@ -123,6 +133,12 @@ fun Application.main() {
                 } else {
                     call.respond(HttpStatusCode.NotFound, "Invalid request!")
                 }
+            }
+            put("/{id}") {
+                val record = call.receive<Record>()
+                val updated = RecordRepository.updateRecord(record)
+                if (updated == null) call.respond(HttpStatusCode.NotFound)
+                else call.respond(HttpStatusCode.OK, updated)
             }
         }
     }

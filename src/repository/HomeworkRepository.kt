@@ -47,6 +47,17 @@ object HomeworkRepository {
         }
     }
 
+    suspend fun updateHomeworks(homeworks: List<Homework>): List<Homework> {
+        val list = arrayListOf<Homework>()
+        homeworks.forEach {
+            val updatedHomework = updateHomework(it)
+            if (updatedHomework != null) {
+                list.add(updatedHomework)
+            }
+        }
+        return list
+    }
+
     private suspend fun addHomework(homework: Homework): Homework? =
         getHomework(dbQuery {
             Homeworks.insert {
