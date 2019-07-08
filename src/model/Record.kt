@@ -3,9 +3,9 @@ package tony.studenthomework.server.model
 import org.jetbrains.exposed.sql.Table
 
 object Records : Table() {
-    val id = integer("id").primaryKey().autoIncrement()
-    val sid = integer("sid")
-    val hid = integer("hid")
+    val id = integer("id").primaryKey(0).autoIncrement()
+    val sid = integer("sid").primaryKey(1)
+    val hid = integer("hid").primaryKey(2)
     val status = integer("status")
 }
 

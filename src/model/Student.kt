@@ -3,8 +3,8 @@ package tony.studenthomework.server.model
 import org.jetbrains.exposed.sql.Table
 
 object Students : Table() {
-    val id = integer("id").primaryKey().autoIncrement()
-    val number = varchar("number", 50)
+    val id = integer("id").primaryKey(0).autoIncrement()
+    val number = varchar("number", 50).primaryKey(1)
     val name = varchar("name", 50)
 }
 

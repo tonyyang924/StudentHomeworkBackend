@@ -83,11 +83,6 @@ object DatabaseFactory {
             }
             Records.insert {
                 it[sid] = 1
-                it[hid] = 5
-                it[status] = 1
-            }
-            Records.insert {
-                it[sid] = 1
                 it[hid] = 6
                 it[status] = 2
             }
