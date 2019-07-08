@@ -34,7 +34,7 @@ object StudentRepository {
     suspend fun updateStudent(student: Student): Student? {
         val existingStudent = dbQuery {
             Students.select {
-                (Students.id eq student.id) or (Students.number eq student.number)
+                (Students.id eq student.id) or (number eq student.number)
             }.mapNotNull {
                 toStudent(it)
             }.singleOrNull()
@@ -43,7 +43,7 @@ object StudentRepository {
             addStudent(student)
         } else {
             getStudent(dbQuery {
-                Students.update({ (Students.id eq student.id) or (Students.number eq student.number) }) {
+                Students.update({ (Students.id eq student.id) or (number eq student.number) }) {
                     it[number] = student.number
                     it[name] = student.name
                 }
