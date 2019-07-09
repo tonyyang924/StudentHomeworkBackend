@@ -39,6 +39,15 @@ repositories {
     maven { url 'https://kotlin.bintray.com/kotlinx' }
 }
 
+jar {
+    baseName 'student-homework-ktor'
+    manifest {
+        attributes 'Main-Class': 'tony.studenthomework.server.MainKt'
+    }
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
