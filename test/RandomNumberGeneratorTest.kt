@@ -6,13 +6,7 @@ class RandomNumberGeneratorTest {
 
     @Test
     fun `generate one thousand number not duplicated`() {
-        RandomNumberGenerator.init()
-        val count = 1000
-        val array = arrayListOf<Int>()
-        (1..count).forEach { _ ->
-            array.add(RandomNumberGenerator.nextInt(count))
-        }
-        println(array.toString())
-        assertTrue(array.groupingBy { it }.eachCount().filter { it.value > 1 }.isEmpty())
+        val randomNumberList = RandomNumberGenerator.generateNoDuplicatedNumberList(1000, Int.MAX_VALUE)
+        assertTrue(randomNumberList.groupingBy { it }.eachCount().filter { it.value > 1 }.isEmpty())
     }
 }
