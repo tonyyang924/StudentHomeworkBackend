@@ -2,9 +2,8 @@
 
 ## Usage
 
-`$ curl http://0.0.0.0:5001/student`
-
-```log
+```
+$ curl http://0.0.0.0:5001/student
 [ {
   "id" : 1,
   "number" : "swift-dingo-15",
@@ -34,9 +33,8 @@
 } ]%
 ```
 
-`$ curl http://0.0.0.0:5001/record`
-
 ```
+$ curl http://0.0.0.0:5001/record
 [ {
   "id" : 1,
   "sid" : 1,
