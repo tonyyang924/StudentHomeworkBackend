@@ -30,7 +30,42 @@ $ curl http://0.0.0.0:5001/student
   "id" : 100,
   "number" : "mighty-chipmunk-24",
   "name" : "Bryant Wright"
-} ]%
+} ]
+```
+
+```
+$ curl http://0.0.0.0:5001/homework
+[ {
+  "id" : 1,
+  "title" : "Two Sum"
+}, {
+  "id" : 2,
+  "title" : "Add Two Numbers"
+}, {
+  "id" : 3,
+  "title" : "Longest Substring Without Repeating Characters"
+}, {
+  "id" : 4,
+  "title" : "Median of Two Sorted Arrays"
+}, {
+  "id" : 5,
+  "title" : "Longest Palindromic Substring"
+}, {
+  "id" : 6,
+  "title" : "ZigZag Conversion"
+}, {
+  "id" : 7,
+  "title" : "Reverse Integer"
+}, {
+  "id" : 8,
+  "title" : "String to Integer (atoi)"
+}, {
+  "id" : 9,
+  "title" : "Palindrome Number"
+}, {
+  "id" : 10,
+  "title" : "Regular Expression Matching"
+} ]
 ```
 
 ```
