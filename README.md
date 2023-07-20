@@ -6,7 +6,7 @@
 
 - Get all students:
 ```
-$ curl http://0.0.0.0:5001/student
+$ curl http://localhost:5001/student
 [ {
   "id" : 1,
   "number" : "swift-dingo-15",
@@ -40,7 +40,7 @@ Update entity if input parameter `id` or `number` is equal to the entity in data
 
 - Create new student:
 ```
-$ curl -X PUT 'http://0.0.0.0:5001/student' --header 'Content-type: application/json' -d '{ "number":"95279527", "name": "
+$ curl -X PUT 'http://localhost:5001/student' --header 'Content-type: application/json' -d '{ "number":"95279527", "name": "
 Tang Bohu"}'
 {
   "id" : 101,
@@ -51,14 +51,14 @@ Tang Bohu"}'
 
 - Update existing entity:
 ```
-$ curl -X PUT 'http://0.0.0.0:5001/student' --header 'Content-type: application/json' -d '{ "number":"old-earwig-67", "name": "Tony Yang"}'
+$ curl -X PUT 'http://localhost:5001/student' --header 'Content-type: application/json' -d '{ "number":"old-earwig-67", "name": "Tony Yang"}'
 ```
 
 ### Homework
 
 - Get all homeworks:
 ```
-$ curl http://0.0.0.0:5001/homework
+$ curl http://localhost:5001/homework
 [ {
   "id" : 1,
   "title" : "Two Sum"
@@ -97,7 +97,7 @@ Update entity if input parameter `id` or `title` is equal to the entity in datab
 
 - Create new homeworks:
 ```
-$ curl -X PUT 'http://0.0.0.0:5001/homework' --header 'Content-type: application/json' --header 'Accept: application/json' -d '[{"id" : 11, "title": "New Homework 11"}, {"id" : 12, "title": "New Homework 12"}]'
+$ curl -X PUT 'http://localhost:5001/homework' --header 'Content-type: application/json' --header 'Accept: application/json' -d '[{"id" : 11, "title": "New Homework 11"}, {"id" : 12, "title": "New Homework 12"}]'
 [ {
   "id" : 11,
   "title" : "New Homework 11"
@@ -109,19 +109,19 @@ $ curl -X PUT 'http://0.0.0.0:5001/homework' --header 'Content-type: application
 
 - Create and update homeworks:
 ```
-$ curl -X PUT 'http://0.0.0.0:5001/homework' --header 'Content-type: application/json' --header 'Accept: application/json' -d '[{"id" : 11, "title": "New Homework 11 - update"}, {"id" : 13, "title": "New Homework 13"}]'
+$ curl -X PUT 'http://localhost:5001/homework' --header 'Content-type: application/json' --header 'Accept: application/json' -d '[{"id" : 11, "title": "New Homework 11 - update"}, {"id" : 13, "title": "New Homework 13"}]'
 ```
 
 - Update existing entitys:
 ```
-$ curl -X PUT 'http://0.0.0.0:5001/homework' --header 'Content-type: application/json' --header 'Accept: application/json' -d '[{"id" : 1, "title": "Title 1"}, {"id" : 2, "title": "Title 2"}]'
+$ curl -X PUT 'http://localhost:5001/homework' --header 'Content-type: application/json' --header 'Accept: application/json' -d '[{"id" : 1, "title": "Title 1"}, {"id" : 2, "title": "Title 2"}]'
 ```
 
 ### Record
 
 - Get all records:
 ```
-$ curl http://0.0.0.0:5001/record
+$ curl http://localhost:5001/record
 [ {
   "id" : 1,
   "sid" : 1,
@@ -162,5 +162,5 @@ Update entity if input parameter `sid` and `hid` is equal to the entity in datab
 
 - Create multiple records:
 ```
-$ curl -X PUT 'http://0.0.0.0:5001/record' --header 'Content-type: application/json' --header 'Accept: application/json' -d '[{"sid" : 1, "hid" : 4, "status" : 0}, {"sid" : 2, "hid" : 2, "status" : 2}, {"sid" : 99, "hid" : 5, "status" : 1}]'
+$ curl -X PUT 'http://localhost:5001/record' --header 'Content-type: application/json' --header 'Accept: application/json' -d '[{"sid" : 1, "hid" : 4, "status" : 0}, {"sid" : 2, "hid" : 2, "status" : 2}, {"sid" : 99, "hid" : 5, "status" : 1}]'
 ```
