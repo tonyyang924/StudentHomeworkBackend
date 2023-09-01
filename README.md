@@ -35,6 +35,63 @@ $ curl http://localhost:5001/student
   "name" : "Bryant Wright"
 } ]
 ```
+- Get details of a specific student
+<br/>For Example: get the details of student with ID=1
+```
+$ curl http://localhost:5001/student/1/detail
+{
+  "id" : 1,
+  "number" : "stupid-snail-40",
+  "name" : "Rich Edmonds",
+  "recordedHomework" : [ {
+    "homework" : {
+      "id" : 1,
+      "title" : "Two Sum"
+    },
+    "status" : {
+      "id" : 1,
+      "status" : "PROCESSING"
+    }
+  }, {
+    "homework" : {
+      "id" : 5,
+      "title" : "Longest Palindromic Substring"
+    },
+    "status" : {
+      "id" : 0,
+      "status" : "NOT_YET"
+    }
+  }, {
+    "homework" : {
+      "id" : 6,
+      "title" : "ZigZag Conversion"
+    },
+    "status" : {
+      "id" : 2,
+      "status" : "DONE"
+    }
+  }, {
+    "homework" : {
+      "id" : 7,
+      "title" : "Reverse Integer"
+    },
+    "status" : {
+      "id" : 1,
+      "status" : "PROCESSING"
+    }
+  }, {
+    "homework" : {
+      "id" : 9,
+      "title" : "Palindrome Number"
+    },
+    "status" : {
+      "id" : 0,
+      "status" : "NOT_YET"
+    }
+  } ]
+}
+```
+
 - Create or update student
 Update entity if input parameter `id` or `number` is equal to the entity in database. Else Create new entity to the database.
 
