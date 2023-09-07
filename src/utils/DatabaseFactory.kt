@@ -1,5 +1,6 @@
 package tony.studenthomework.server.utils
 
+import com.github.kkuegler.PermutationBasedHumanReadableIdGenerator
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
@@ -9,11 +10,10 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.slf4j.LoggerFactory
 import tony.studenthomework.server.model.Homeworks
 import tony.studenthomework.server.model.Records
 import tony.studenthomework.server.model.Students
-import com.github.kkuegler.PermutationBasedHumanReadableIdGenerator
-import org.slf4j.LoggerFactory
 
 
 object DatabaseFactory {
